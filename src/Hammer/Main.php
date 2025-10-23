@@ -49,16 +49,16 @@ class Main extends PluginBase
         });
 
         NexlyEventManager::getInstance()->listen(RecipeRegistryEvent::class, static function (RecipeRegistryEvent $ev): void {
-            $ev->registerShaped(MinecraftShape::HAMMER, ["A" => "diamond_block", "B" => "stick"], ["diamond_hammer"]);
-            $ev->registerShaped(MinecraftShape::HAMMER, ["A" => "gold_block", "B" => "stick"], ["golden_hammer"]);
-            $ev->registerShaped(MinecraftShape::HAMMER, ["A" => "iron_block", "B" => "stick"], ["iron_hammer"]);
-            $ev->registerShaped(MinecraftShape::HAMMER, ["A" => "stone_block", "B" => "stick"], ["stone_hammer"]);
-            $ev->registerShaped(MinecraftShape::HAMMER, ["A" => "oak_log", "B" => "stick"], ["wooden_hammer"]);
-            $ev->registerShaped(MinecraftShape::HAMMER, ["A" => "spruce_log", "B" => "stick"], ["wooden_hammer"]);
-            $ev->registerShaped(MinecraftShape::HAMMER, ["A" => "birch_log", "B" => "stick"], ["wooden_hammer"]);
-            $ev->registerShaped(MinecraftShape::HAMMER, ["A" => "jungle_log", "B" => "stick"], ["wooden_hammer"]);
-            $ev->registerShaped(MinecraftShape::HAMMER, ["A" => "acacia_log", "B" => "stick"], ["wooden_hammer"]);
-            $ev->registerShaped(MinecraftShape::HAMMER, ["A" => "dark_oak_log", "B" => "stick"], ["wooden_hammer"]);
+            $ev->registerShaped(MinecraftShape::PICKAXE, ["A" => "diamond_block", "B" => "stick"], ["diamond_hammer"]);
+            $ev->registerShaped(MinecraftShape::PICKAXE, ["A" => "gold_block", "B" => "stick"], ["golden_hammer"]);
+            $ev->registerShaped(MinecraftShape::PICKAXE, ["A" => "iron_block", "B" => "stick"], ["iron_hammer"]);
+            $ev->registerShaped(MinecraftShape::PICKAXE, ["A" => "stone_block", "B" => "stick"], ["stone_hammer"]);
+            $ev->registerShaped(MinecraftShape::PICKAXE, ["A" => "oak_log", "B" => "stick"], ["wooden_hammer"]);
+            $ev->registerShaped(MinecraftShape::PICKAXE, ["A" => "spruce_log", "B" => "stick"], ["wooden_hammer"]);
+            $ev->registerShaped(MinecraftShape::PICKAXE, ["A" => "birch_log", "B" => "stick"], ["wooden_hammer"]);
+            $ev->registerShaped(MinecraftShape::PICKAXE, ["A" => "jungle_log", "B" => "stick"], ["wooden_hammer"]);
+            $ev->registerShaped(MinecraftShape::PICKAXE, ["A" => "acacia_log", "B" => "stick"], ["wooden_hammer"]);
+            $ev->registerShaped(MinecraftShape::PICKAXE, ["A" => "dark_oak_log", "B" => "stick"], ["wooden_hammer"]);
         });
 
         self::setInstance($instance = $this);
