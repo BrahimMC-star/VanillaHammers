@@ -9,6 +9,8 @@ use Hammer\Listener\HammerListener;
 use Nexly\Events\Impl\ItemRegistryEvent;
 use Nexly\Events\Impl\RecipeRegistryEvent;
 use Nexly\Events\NexlyEventManager;
+use pocketmine\data\bedrock\block\BlockTypeNames;
+use pocketmine\data\bedrock\item\ItemTypeNames;
 use pocketmine\item\ItemIdentifier;
 use pocketmine\item\ItemTypeIds;
 use pocketmine\item\StringToItemParser;
@@ -59,7 +61,7 @@ class Main extends PluginBase
             $ev->registerShaped($shape, ["A" => "diamond_block", "B" => "stick"], [$parser->parse("diamond_hammer")]);
             $ev->registerShaped($shape, ["A" => "gold_block", "B" => "stick"], [$parser->parse("golden_hammer")]);
             $ev->registerShaped($shape, ["A" => "iron_block", "B" => "stick"], [$parser->parse("iron_hammer")]);
-            $ev->registerShaped($shape, ["A" => "stone_block", "B" => "stick"], [$parser->parse("stone_hammer")]);
+            $ev->registerShaped($shape, ["A" => "cobblestone", "B" => "stick"], [$parser->parse("stone_hammer")]);
             $ev->registerShaped($shape, ["A" => "oak_log", "B" => "stick"], [$parser->parse("wooden_hammer")]);
             $ev->registerShaped($shape, ["A" => "spruce_log", "B" => "stick"], [$parser->parse("wooden_hammer")]);
             $ev->registerShaped($shape, ["A" => "birch_log", "B" => "stick"], [$parser->parse("wooden_hammer")]);
