@@ -7,9 +7,9 @@ use Hammer\Hammers\ToolTier;
 use Hammer\Items\HammerItems;
 use Hammer\Listener\HammerListener;
 use Nexly\Events\Impl\ItemRegistryEvent;
+use Nexly\Events\Impl\RecipeRegistryEvent;
 use Nexly\Events\NexlyEventManager;
-use Nexly\Items\Creative\CreativeInfo;
-use pocketmine\inventory\CreativeCategory;
+use Nexly\Recipes\MinecraftShape;
 use pocketmine\item\ItemIdentifier;
 use pocketmine\item\ItemTypeIds;
 use pocketmine\plugin\PluginBase;
@@ -46,6 +46,19 @@ class Main extends PluginBase
             $ev->register("hammer:golden_hammer", new Hammer(new ItemIdentifier(ItemTypeIds::newId()), "Golden Hammer", $goldenHammer));
 
             HammerItems::checkInit();
+        });
+
+        NexlyEventManager::getInstance()->listen(RecipeRegistryEvent::class, static function (RecipeRegistryEvent $ev): void {
+            $ev->registerShaped(MinecraftShape::HAMMER, ["A" => "diamond_block", "B" => "stick"], ["diamond_hammer"]);
+            $ev->registerShaped(MinecraftShape::HAMMER, ["A" => "gold_block", "B" => "stick"], ["golden_hammer"]);
+            $ev->registerShaped(MinecraftShape::HAMMER, ["A" => "iron_block", "B" => "stick"], ["iron_hammer"]);
+            $ev->registerShaped(MinecraftShape::HAMMER, ["A" => "stone_block", "B" => "stick"], ["stone_hammer"]);
+            $ev->registerShaped(MinecraftShape::HAMMER, ["A" => "oak_log", "B" => "stick"], ["wooden_hammer"]);
+            $ev->registerShaped(MinecraftShape::HAMMER, ["A" => "spruce_log", "B" => "stick"], ["wooden_hammer"]);
+            $ev->registerShaped(MinecraftShape::HAMMER, ["A" => "birch_log", "B" => "stick"], ["wooden_hammer"]);
+            $ev->registerShaped(MinecraftShape::HAMMER, ["A" => "jungle_log", "B" => "stick"], ["wooden_hammer"]);
+            $ev->registerShaped(MinecraftShape::HAMMER, ["A" => "acacia_log", "B" => "stick"], ["wooden_hammer"]);
+            $ev->registerShaped(MinecraftShape::HAMMER, ["A" => "dark_oak_log", "B" => "stick"], ["wooden_hammer"]);
         });
 
         self::setInstance($instance = $this);

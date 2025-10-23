@@ -6,8 +6,11 @@ use Hammer\Hammers\Hammer;
 use pocketmine\block\Air;
 use pocketmine\block\Bedrock;
 use pocketmine\block\Block;
+use pocketmine\block\Dirt;
 use pocketmine\block\GlowingObsidian;
+use pocketmine\block\Gravel;
 use pocketmine\block\Liquid;
+use pocketmine\block\Sand;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\Listener;
 use pocketmine\math\Vector3;
@@ -102,6 +105,15 @@ final class HammerListener implements Listener
             return false;
         }
         if ($block instanceof GlowingObsidian) {
+            return false;
+        }
+        if ($block instanceof Dirt) {
+            return false;
+        }
+        if ($block instanceof Gravel) {
+            return false;
+        }
+        if ($block instanceof Sand) {
             return false;
         }
         return true;
