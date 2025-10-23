@@ -4,3 +4,5 @@ main: Hammer\Main
 api: 5.35.0
 author: br3him000
 description: Vanilla Hammers are finally here as a PocketMine-MP plugin!
+depend:
+  - Nexly
