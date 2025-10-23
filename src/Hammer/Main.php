@@ -9,8 +9,6 @@ use Hammer\Listener\HammerListener;
 use Nexly\Events\Impl\ItemRegistryEvent;
 use Nexly\Events\Impl\RecipeRegistryEvent;
 use Nexly\Events\NexlyEventManager;
-use pocketmine\data\bedrock\block\BlockTypeNames;
-use pocketmine\data\bedrock\item\ItemTypeNames;
 use pocketmine\item\ItemIdentifier;
 use pocketmine\item\ItemTypeIds;
 use pocketmine\item\StringToItemParser;
