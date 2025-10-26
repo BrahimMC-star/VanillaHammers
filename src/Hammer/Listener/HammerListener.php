@@ -6,8 +6,10 @@ use Hammer\Hammers\Hammer;
 use pocketmine\block\Air;
 use pocketmine\block\Bedrock;
 use pocketmine\block\Block;
+use pocketmine\block\BlockToolType;
 use pocketmine\block\Dirt;
 use pocketmine\block\GlowingObsidian;
+use pocketmine\block\Grass;
 use pocketmine\block\Gravel;
 use pocketmine\block\Liquid;
 use pocketmine\block\Sand;
@@ -95,27 +97,20 @@ final class HammerListener implements Listener
 
     private function canBreakWithHammer(Block $block) : bool
     {
-        if ($block instanceof Air) {
+        $cannotBreak = match (true) {
+            $block instanceof Air,
+            $block instanceof Liquid,
+            $block instanceof Bedrock,
+            $block instanceof GlowingObsidian,
+            $block instanceof Dirt,
+            $block instanceof Grass,
+            $block instanceof Gravel,
+            $block instanceof Sand => true,
+            default => false
+        };
+        if ($cannotBreak) {
             return false;
         }
-        if ($block instanceof Liquid) {
-            return false;
-        }
-        if ($block instanceof Bedrock) {
-            return false;
-        }
-        if ($block instanceof GlowingObsidian) {
-            return false;
-        }
-        if ($block instanceof Dirt) {
-            return false;
-        }
-        if ($block instanceof Gravel) {
-            return false;
-        }
-        if ($block instanceof Sand) {
-            return false;
-        }
-        return true;
+        return $block->getBreakInfo()->getToolType() === BlockToolType::PICKAXE;
     }
 }
