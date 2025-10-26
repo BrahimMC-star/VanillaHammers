@@ -4,12 +4,13 @@ namespace Hammer\Hammers;
 
 use pocketmine\item\ItemIdentifier;
 use pocketmine\item\Pickaxe as PickaxePM;
+use pocketmine\item\ToolTier as ToolTierPM;
 
 class Hammer extends PickaxePM
 {
-    public function __construct(ItemIdentifier $identifier, string $name, protected ToolTier $ctier, array $enchantmentTags = [])
+    public function __construct(ItemIdentifier $identifier, string $name, protected ToolTierPM $ctier, array $enchantmentTags = [])
     {
-        parent::__construct($identifier, $name, \pocketmine\item\ToolTier::DIAMOND(), $enchantmentTags);
+        parent::__construct($identifier, $name, ToolTierPM::DIAMOND(), $enchantmentTags);
     }
 
     public function getMaxDurability(): int
@@ -31,8 +32,8 @@ class Hammer extends PickaxePM
     {
         return $this->ctier->getEnchantability();
     }
-    public function getToolTier(): \pocketmine\item\ToolTier
+    public function getToolTier(): ToolTierPM
     {
-        return \pocketmine\item\ToolTier::DIAMOND();
+        return ToolTierPM::DIAMOND();
     }
 }

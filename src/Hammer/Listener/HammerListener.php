@@ -13,6 +13,7 @@ use pocketmine\block\Grass;
 use pocketmine\block\Gravel;
 use pocketmine\block\Liquid;
 use pocketmine\block\Sand;
+use pocketmine\block\Wood;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\Listener;
 use pocketmine\math\Vector3;
@@ -105,7 +106,8 @@ final class HammerListener implements Listener
             $block instanceof Dirt,
             $block instanceof Grass,
             $block instanceof Gravel,
-            $block instanceof Sand => true,
+            $block instanceof Sand,
+            $block instanceof Wood => true,
             default => false
         };
         if ($cannotBreak) {
