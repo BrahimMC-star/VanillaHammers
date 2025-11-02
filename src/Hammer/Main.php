@@ -9,6 +9,7 @@ use Hammer\Listener\HammerListener;
 use Nexly\Events\Impl\ItemRegistryEvent;
 use Nexly\Events\Impl\RecipeRegistryEvent;
 use Nexly\Events\NexlyEventManager;
+use pocketmine\item\enchantment\ItemEnchantmentTags;
 use pocketmine\item\ItemIdentifier;
 use pocketmine\item\ItemTypeIds;
 use pocketmine\item\StringToItemParser;
@@ -39,12 +40,11 @@ class Main extends PluginBase
             $diamondHammer = new ToolTier(3, 3122, 7, 8, 20);
             $goldenHammer = new ToolTier(0, 64, 3, 12, 20);
 
-            $ev->register("hammer:wooden_hammer", new Hammer(new ItemIdentifier(ItemTypeIds::newId()), "Wooden Hammer", $woodenHammer));
-            $ev->register("hammer:stone_hammer", new Hammer(new ItemIdentifier(ItemTypeIds::newId()), "Stone Hammer", $stoneHammer));
-            $ev->register("hammer:iron_hammer", new Hammer(new ItemIdentifier(ItemTypeIds::newId()), "Iron Hammer", $ironHammer));
-            $ev->register("hammer:diamond_hammer", new Hammer(new ItemIdentifier(ItemTypeIds::newId()), "Diamond Hammer", $diamondHammer));
-            $ev->register("hammer:golden_hammer", new Hammer(new ItemIdentifier(ItemTypeIds::newId()), "Golden Hammer", $goldenHammer));
-
+            $ev->register("hammer:wooden_hammer", new Hammer(new ItemIdentifier(ItemTypeIds::newId()), "Wooden Hammer", $woodenHammer, [ItemEnchantmentTags::PICKAXE]));
+            $ev->register("hammer:stone_hammer", new Hammer(new ItemIdentifier(ItemTypeIds::newId()), "Stone Hammer", $stoneHammer, [ItemEnchantmentTags::PICKAXE]));
+            $ev->register("hammer:iron_hammer", new Hammer(new ItemIdentifier(ItemTypeIds::newId()), "Iron Hammer", $ironHammer, [ItemEnchantmentTags::PICKAXE]));
+            $ev->register("hammer:diamond_hammer", new Hammer(new ItemIdentifier(ItemTypeIds::newId()), "Diamond Hammer", $diamondHammer, [ItemEnchantmentTags::PICKAXE]));
+            $ev->register("hammer:golden_hammer", new Hammer(new ItemIdentifier(ItemTypeIds::newId()), "Golden Hammer", $goldenHammer, [ItemEnchantmentTags::PICKAXE]));
             HammerItems::checkInit();
         });
 

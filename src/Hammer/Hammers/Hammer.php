@@ -8,7 +8,7 @@ use pocketmine\item\ToolTier as ToolTierPM;
 
 class Hammer extends PickaxePM
 {
-    public function __construct(ItemIdentifier $identifier, string $name, protected ToolTierPM $ctier, array $enchantmentTags = [])
+    public function __construct(ItemIdentifier $identifier, string $name, protected ToolTier $ctier, array $enchantmentTags = [])
     {
         parent::__construct($identifier, $name, ToolTierPM::DIAMOND(), $enchantmentTags);
     }
