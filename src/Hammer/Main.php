@@ -34,11 +34,11 @@ class Main extends PluginBase
     public function onLoad(): void
     {
         NexlyEventManager::getInstance()->listen(ItemRegistryEvent::class, static function (ItemRegistryEvent $ev): void {
-            $woodenHammer = new ToolTier(0, 240, 3, 1.8, 20, 1, 2);
+            $woodenHammer = new ToolTier(0, 240, 4, 1.8, 20, 1, 2);
             $stoneHammer = new ToolTier(1, 524, 5, 2.6, 20, 3, 2);
             $ironHammer = new ToolTier(2, 1000, 6, 3.2, 20, 3, 3);
             $diamondHammer = new ToolTier(3, 6244, 7, 5.6, 20, 5, 5);
-            $goldenHammer = new ToolTier(0, 128, 3, 4.1, 20, 1, 2);
+            $goldenHammer = new ToolTier(0, 128, 4, 4.1, 20, 1, 2);
 
             $ev->register("hammer:wooden_hammer", new Hammer(new ItemIdentifier(ItemTypeIds::newId()), "Wooden Hammer", $woodenHammer, [ItemEnchantmentTags::PICKAXE]));
             $ev->register("hammer:stone_hammer", new Hammer(new ItemIdentifier(ItemTypeIds::newId()), "Stone Hammer", $stoneHammer, [ItemEnchantmentTags::PICKAXE]));
