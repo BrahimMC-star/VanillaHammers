@@ -9,8 +9,10 @@ readonly class ToolTier
         private int $harvestLevel,
         private int $maxDurability,
         private int $baseAttackPoints,
-        private int $baseEfficiency,
-        private int $enchantability
+        private float $baseEfficiency,
+        private int $enchantability,
+        private int $miningAreaWidth = 3,
+        private int $miningAreaHeight = 3
     ){}
 
     /**
@@ -34,13 +36,13 @@ readonly class ToolTier
      */
     public function getBaseAttackPoints(): int
     {
-        return $this->baseAttackPoints;
+        return $this->baseAttackPoints - 2;
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getBaseEfficiency(): int
+    public function getBaseEfficiency(): float
     {
         return $this->baseEfficiency;
     }
@@ -51,5 +53,15 @@ readonly class ToolTier
     public function getEnchantability(): int
     {
         return $this->enchantability;
+    }
+
+    public function getMiningAreaWidth(): int
+    {
+        return $this->miningAreaWidth;
+    }
+
+    public function getMiningAreaHeight(): int
+    {
+        return $this->miningAreaHeight;
     }
 }

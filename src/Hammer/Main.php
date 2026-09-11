@@ -34,17 +34,18 @@ class Main extends PluginBase
     public function onLoad(): void
     {
         NexlyEventManager::getInstance()->listen(ItemRegistryEvent::class, static function (ItemRegistryEvent $ev): void {
-            $woodenHammer = new ToolTier(0, 120, 4, 2, 20);
-            $stoneHammer = new ToolTier(1, 262, 5, 4, 20);
-            $ironHammer = new ToolTier(2, 500, 6, 6, 20);
-            $diamondHammer = new ToolTier(3, 3122, 7, 8, 20);
-            $goldenHammer = new ToolTier(0, 64, 3, 12, 20);
+            $woodenHammer = new ToolTier(0, 240, 3, 1.8, 20, 1, 2);
+            $stoneHammer = new ToolTier(1, 524, 5, 2.6, 20, 3, 2);
+            $ironHammer = new ToolTier(2, 1000, 6, 3.2, 20, 3, 3);
+            $diamondHammer = new ToolTier(3, 6244, 7, 5.6, 20, 5, 5);
+            $goldenHammer = new ToolTier(0, 128, 3, 4.1, 20, 1, 2);
 
             $ev->register("hammer:wooden_hammer", new Hammer(new ItemIdentifier(ItemTypeIds::newId()), "Wooden Hammer", $woodenHammer, [ItemEnchantmentTags::PICKAXE]));
             $ev->register("hammer:stone_hammer", new Hammer(new ItemIdentifier(ItemTypeIds::newId()), "Stone Hammer", $stoneHammer, [ItemEnchantmentTags::PICKAXE]));
             $ev->register("hammer:iron_hammer", new Hammer(new ItemIdentifier(ItemTypeIds::newId()), "Iron Hammer", $ironHammer, [ItemEnchantmentTags::PICKAXE]));
             $ev->register("hammer:diamond_hammer", new Hammer(new ItemIdentifier(ItemTypeIds::newId()), "Diamond Hammer", $diamondHammer, [ItemEnchantmentTags::PICKAXE]));
             $ev->register("hammer:golden_hammer", new Hammer(new ItemIdentifier(ItemTypeIds::newId()), "Golden Hammer", $goldenHammer, [ItemEnchantmentTags::PICKAXE]));
+
             HammerItems::checkInit();
         });
 

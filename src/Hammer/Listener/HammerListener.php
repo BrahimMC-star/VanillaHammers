@@ -47,10 +47,15 @@ final class HammerListener implements Listener
         $pitch  = $loc->pitch;
         $yaw    = $loc->yaw;
 
+        $width  = $item->getCustomToolTier()->getMiningAreaWidth();
+        $height = $item->getCustomToolTier()->getMiningAreaHeight();
+        $rangeW = $this->axisRange($width);
+        $rangeH = $this->axisRange($height);
+
         $offsets = [];
         if (abs($pitch) > 60) {
-            for ($dx = -1; $dx <= 1; $dx++) {
-                for ($dz = -1; $dz <= 1; $dz++) {
+            foreach ($rangeW as $dx) {
+                foreach ($rangeH as $dz) {
                     if ($dx === 0 && $dz === 0) continue;
                     $offsets[] = new Vector3($dx, 0, $dz);
                 }
@@ -63,15 +68,15 @@ final class HammerListener implements Listener
             $useYZ = $distToZAxis > 45 && $distToZAxis < 135;
 
             if ($useYZ) {
-                for ($dy = -1; $dy <= 1; $dy++) {
-                    for ($dz = -1; $dz <= 1; $dz++) {
+                foreach ($rangeH as $dy) {
+                    foreach ($rangeW as $dz) {
                         if ($dy === 0 && $dz === 0) continue;
                         $offsets[] = new Vector3(0, $dy, $dz);
                     }
                 }
             } else {
-                for ($dy = -1; $dy <= 1; $dy++) {
-                    for ($dx = -1; $dx <= 1; $dx++) {
+                foreach ($rangeH as $dy) {
+                    foreach ($rangeW as $dx) {
                         if ($dy === 0 && $dx === 0) continue;
                         $offsets[] = new Vector3($dx, $dy, 0);
                     }
@@ -94,6 +99,17 @@ final class HammerListener implements Listener
         } finally {
             unset(self::$breakingGuard[$pid]);
         }
+    }
+
+    /**
+     * @return int[]
+     */
+    private function axisRange(int $size) : array
+    {
+        $size = max(1, $size);
+        $before = intdiv($size - 1, 2);
+        $after  = $size - 1 - $before;
+        return range(-$before, $after);
     }
 
     private function canBreakWithHammer(Block $block) : bool
